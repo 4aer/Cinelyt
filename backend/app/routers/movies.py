@@ -20,8 +20,7 @@ async def search_movies(query: str):
 async def get_movie(tmdb_id: int):
     try:
         details = await tmdb.get_movie_details(tmdb_id)
-        imdb_id = details.get("external_ids", {}).get("imdb_id") or details.get("imdb_id")
-        embed_urls = vidsrc.get_movie_embed_urls(imdb_id) if imdb_id else []
+        embed_urls = vidsrc.get_movie_embed_urls(str(tmdb_id))
         similar = await tmdb.get_similar(tmdb_id, media_type="movie")
         return {
             "details": details,
