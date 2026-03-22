@@ -108,7 +108,7 @@ export default function TVPage() {
               onClick={toggleWatchlist}
               className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm px-4 py-2 rounded-lg transition"
             >
-              {inList ? <><BookmarkCheck size={15} className="text-red-400" /> In Watchlist</> : <><Bookmark size={15} /> Add to Watchlist</>}
+              {inList ? <><BookmarkCheck size={15} className="text-green-400" /> In Watchlist</> : <><Bookmark size={15} /> Add to Watchlist</>}
             </button>
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function TVPage() {
         {/* Player */}
         <div>
           <h2 className="text-white text-lg font-semibold mb-3 flex items-center gap-2">
-            <Play size={16} className="text-red-500" />
+            <Play size={16} className="text-(--gold)" />
             Now Playing — S{season} E{episode}
           </h2>
           <VideoPlayer embedUrls={embedUrls} title={`${details.name} S${season}E${episode}`} />
@@ -125,7 +125,7 @@ export default function TVPage() {
         {/* Episode Selector */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <List size={16} className="text-red-500" />
+            <List size={16} className="text-(--gold)" />
             <h2 className="text-white text-lg font-semibold">Episodes</h2>
 
             {/* Season Dropdown */}
@@ -151,7 +151,7 @@ export default function TVPage() {
                       onClick={() => { setSeason(s); setEpisode(1); setSeasonOpen(false) }}
                       className={`w-full text-left px-4 py-2.5 text-sm transition ${
                         s === season
-                          ? "bg-black-500/20 text-red-500 font-semibold"
+                          ? "bg-black-500/20 text-(--gold) font-semibold"
                           : "text-zinc-300 hover:bg-white/5"
                       }`}
                     >
@@ -171,13 +171,13 @@ export default function TVPage() {
                 onClick={() => setEpisode(ep)}
                 className={`shrink-0 flex items-center gap-3 px-4 py-3 rounded-xl border text-sm transition-all ${
                   ep === episode
-                    ? "bg-black-500/15 border-red-500/40 text-white"
+                    ? "bg-black-500/15 border-(--gold)/40 text-white"
                     : "bg-white/3 border-white/8 text-zinc-400 hover:bg-white/8 hover:text-white hover:border-white/20"
                 }`}
                 style={{ minWidth: "fit-content" }}
               >
                 <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${
-                  ep === episode ? "bg-red-500" : "bg-white/10"
+                  ep === episode ? "bg-(--gold)" : "bg-white/10"
                 }`}>
                   <Play size={10} className={ep === episode ? "text-black fill-black" : "text-zinc-400 fill-zinc-400"} />
                 </div>
