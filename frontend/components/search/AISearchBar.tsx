@@ -1,16 +1,21 @@
 "use client"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Sparkles } from "lucide-react"
 
 export default function AISearchBar() {
   const [prompt, setPrompt] = useState("")
   const [loading, setLoading] = useState(false)
   const router = useRouter()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    setLoading(false)
+  }, [searchParams])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!prompt.trim()) return
+    if (!prompt.trim() || loading) return
     setLoading(true)
     router.push(`/search?ai=${encodeURIComponent(prompt.trim())}`)
   }
@@ -31,7 +36,8 @@ export default function AISearchBar() {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder="Describe what you want to watch..."
-          className="w-full bg-zinc-800/80 backdrop-blur text-white pl-11 pr-32 py-4 rounded-2xl border border-zinc-700 focus:outline-none focus:border-red-500 transition text-sm"
+          disabled={loading}
+          className="w-full bg-zinc-800/80 backdrop-blur text-white pl-11 pr-32 py-4 rounded-2xl border border-zinc-700 focus:outline-none focus:border-red-500 transition text-sm disabled:opacity-50"
         />
         <button
           type="submit"
@@ -47,7 +53,8 @@ export default function AISearchBar() {
           <button
             key={s}
             onClick={() => setPrompt(s)}
-            className="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs px-3 py-1.5 rounded-full border border-zinc-700 transition"
+            disabled={loading}
+            className="bg-zinc-800 hover:bg-zinc-700 disabled:opacity-50 text-zinc-300 text-xs px-3 py-1.5 rounded-full border border-zinc-700 transition"
           >
             {s}
           </button>
