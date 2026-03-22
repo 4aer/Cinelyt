@@ -4,7 +4,7 @@ from app.config import GEMINI_API_KEY
 
 # Initialize the modern Client
 client = genai.Client(api_key=GEMINI_API_KEY)
-MODEL_ID = "gemini-2.0-flash"
+MODEL_ID = "gemini-2.5-flash"
 
 async def interpret_search_prompt(prompt: str) -> dict:
     system_instruction = """
