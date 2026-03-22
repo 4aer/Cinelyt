@@ -10,7 +10,7 @@ export default function WatchlistPage() {
     <main className="min-h-screen bg-zinc-950 pt-24 pb-16 px-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-white text-2xl font-bold mb-8 flex items-center gap-2">
-          <Bookmark className="text-red-500" /> My Watchlist
+          <Bookmark className="text-(--gold)" /> My Watchlist
         </h1>
         {items.length === 0 ? (
           <div className="text-center text-zinc-400 py-20">

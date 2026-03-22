@@ -55,7 +55,7 @@ export default function VideoPlayer({ embedUrls, title }: Props) {
               onClick={() => { setSourceIndex(i); setError(false) }}
               className={`px-3 py-1 rounded text-sm transition ${
                 i === sourceIndex
-                  ? "bg-red-600 text-white"
+                  ? "bg-(--gold) text-black font-semibold"
                   : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
               }`}
             >
