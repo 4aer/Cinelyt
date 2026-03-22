@@ -7,6 +7,7 @@ app = FastAPI(title="Cinelyt API", version="1.0.0")
 
 ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://cinelyt.vercel.app",
     os.getenv("FRONTEND_URL", ""),
 ]
 
