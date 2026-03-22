@@ -1,10 +1,10 @@
-import google.generativeai as genai
+from google import genai
 import json
 from app.config import GEMINI_API_KEY
 
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-2.0-flash")
-
+# Initialize the modern Client
+client = genai.Client(api_key=GEMINI_API_KEY)
+MODEL_ID = "gemini-2.0-flash"
 
 async def interpret_search_prompt(prompt: str) -> dict:
     system_instruction = """
@@ -22,10 +22,16 @@ async def interpret_search_prompt(prompt: str) -> dict:
     Do not include any explanation, markdown, or extra text. Only output the raw JSON.
     """
 
-    full_prompt = f"{system_instruction}\n\nUser prompt: {prompt}"
-
-    response = model.generate_content(full_prompt)
-    raw = response.text.strip()
+    try:
+        response = client.models.generate_content(
+            model=MODEL_ID,
+            config={'system_instruction': system_instruction},
+            contents=prompt
+        )
+        raw = response.text.strip()
+    except Exception as e:
+        print(f"Gemini API Error: {e}")
+        raw = ""
 
     # Strip markdown code fences if Gemini adds them
     if raw.startswith("```"):
