@@ -4,6 +4,19 @@ A personal streaming discovery platform powered by AI search. Built as a learnin
 
 ---
 
+## ⚠️ Before You Start — Wake Up the Backend
+
+> **Cinelyt's backend is hosted on Render's free tier, which spins down after 15 minutes of inactivity.**
+>
+> To use the app, you need to wake it up first:
+>
+> 1. **Open the backend URL:** [cinelyt.onrender.com](https://cinelyt.onrender.com) and wait about **1 minute** for it to fully start.
+> 2. **Then open the app:** [cinelyt.vercel.app](https://cinelyt.vercel.app)
+>
+> Skipping this step will cause the app to load without its AI features and video players, as the backend won't be ready to handle requests yet.
+
+---
+
 ## Purpose
 
 This project was built to learn how to work with AI APIs (Google Gemini) and data APIs (TMDB) in a real application context — covering everything from prompt engineering and structured AI output parsing, to API integration, full-stack architecture, and deployment.
