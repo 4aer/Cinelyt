@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import Navbar from "@/components/ui/Navbar"
 import Footer from "@/components/ui/Footer"
+import BackToTop from "@/components/ui/BackToTop"
 
 export const metadata: Metadata = {
   title: "Cinelyt — Find Your Next Obsession",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         {children}
         <Footer />
+        <BackToTop />
       </body>
     </html>
   )
