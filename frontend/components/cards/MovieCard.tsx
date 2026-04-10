@@ -4,12 +4,19 @@ import Image from "next/image"
 import { Star, Bookmark, BookmarkCheck, Play } from "lucide-react"
 import { buildImageUrl, formatRating, getTitle, getDate, getMediaType } from "@/lib/utils"
 import { useWatchlistStore } from "@/store/watchlistStore"
+import { useState, useEffect } from "react"
 
 export default function MovieCard({ item }: { item: any }) {
   const { add, remove, isInWatchlist } = useWatchlistStore()
+  const [mounted, setMounted] = useState(false)
   const mediaType = getMediaType(item)
   const title = getTitle(item)
-  const inList = isInWatchlist(item.id)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const inList = mounted ? isInWatchlist(item.id) : false
 
   const toggleWatchlist = (e: React.MouseEvent) => {
     e.preventDefault()
