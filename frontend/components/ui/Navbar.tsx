@@ -65,17 +65,32 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-1">
 
           {/* Movies Dropdown */}
-          <div className="relative" onMouseEnter={() => setMoviesOpen(true)} onMouseLeave={() => setMoviesOpen(false)}>
+          <div
+            className="relative"
+            onMouseEnter={() => setMoviesOpen(true)}
+            onMouseLeave={(e) => {
+              const related = e.relatedTarget as Node
+              if (!e.currentTarget.contains(related)) setMoviesOpen(false)
+            }}
+          >
             <button className="flex items-center gap-1.5 text-zinc-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 text-sm transition">
               <Clapperboard size={14} />
               Movies
               <ChevronDown size={12} className={`transition-transform ${moviesOpen ? "rotate-180" : ""}`} />
             </button>
+
+            {/* Invisible bridge to prevent gap-triggered close */}
+            {moviesOpen && <div className="absolute top-full left-0 w-full h-2" />}
+
             {moviesOpen && (
-              <div className="absolute top-full left-0 mt-1 bg-[#161616] border border-white/8 rounded-2xl p-3 shadow-2xl grid grid-cols-3 gap-1 w-64 animate-slideIn">
+              <div className="absolute top-[calc(100%+4px)] left-0 bg-[#161616] border border-white/8 rounded-2xl p-3 shadow-2xl grid grid-cols-3 gap-1 w-64 animate-slideIn z-50">
+                <Link href="/movies"
+                  className="col-span-3 text-(--gold)] text-xs px-2 py-1.5 rounded-lg hover:bg-white/5 transition font-semibold border-b border-white/5 pb-2 mb-1">
+                  Browse All Movies →
+                </Link>
                 {MOVIE_GENRES.map((g) => (
-                  <Link key={g.id} href={`/search?genre=${g.id}&type=movie&name=${g.name}`}
-                    className="text-zinc-400 hover:text-(--gold) text-xs px-2 py-1.5 rounded-lg hover:bg-white/5 transition">
+                  <Link key={g.id} href={`/movies?genre_id=${g.id}`}
+                    className="text-zinc-400 hover:text-(--gold)] text-xs px-2 py-1.5 rounded-lg hover:bg-white/5 transition">
                     {g.name}
                   </Link>
                 ))}
@@ -84,17 +99,31 @@ export default function Navbar() {
           </div>
 
           {/* TV Dropdown */}
-          <div className="relative" onMouseEnter={() => setTvOpen(true)} onMouseLeave={() => setTvOpen(false)}>
+          <div
+            className="relative"
+            onMouseEnter={() => setTvOpen(true)}
+            onMouseLeave={(e) => {
+              const related = e.relatedTarget as Node
+              if (!e.currentTarget.contains(related)) setTvOpen(false)
+            }}
+          >
             <button className="flex items-center gap-1.5 text-zinc-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 text-sm transition">
               <Tv size={14} />
               TV Shows
               <ChevronDown size={12} className={`transition-transform ${tvOpen ? "rotate-180" : ""}`} />
             </button>
+
+            {tvOpen && <div className="absolute top-full left-0 w-full h-2" />}
+
             {tvOpen && (
-              <div className="absolute top-full left-0 mt-1 bg-[#161616] border border-white/8 rounded-2xl p-3 shadow-2xl grid grid-cols-2 gap-1 w-56 animate-slideIn">
+              <div className="absolute top-[calc(100%+4px)] left-0 bg-[#161616] border border-white/8 rounded-2xl p-3 shadow-2xl grid grid-cols-2 gap-1 w-56 animate-slideIn z-50">
+                <Link href="/tv"
+                  className="col-span-2 text-(--gold)] text-xs px-2 py-1.5 rounded-lg hover:bg-white/5 transition font-semibold border-b border-white/5 pb-2 mb-1">
+                  Browse All TV Shows →
+                </Link>
                 {TV_GENRES.map((g) => (
-                  <Link key={g.id} href={`/search?genre=${g.id}&type=tv&name=${g.name}`}
-                    className="text-zinc-400 hover:text-(--gold) text-xs px-2 py-1.5 rounded-lg hover:bg-white/5 transition">
+                  <Link key={g.id} href={`/tv?genre_id=${g.id}`}
+                    className="text-zinc-400 hover:text-(--gold)] text-xs px-2 py-1.5 rounded-lg hover:bg-white/5 transition">
                     {g.name}
                   </Link>
                 ))}
