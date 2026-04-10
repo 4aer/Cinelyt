@@ -44,5 +44,25 @@ export const searchTV = async (query: string) => {
   return res.data.results
 }
 
+export const browseMovies = async (params: {
+  page?: number
+  genre_id?: string
+  year?: string
+  sort_by?: string
+}) => {
+  const res = await api.get("/movies/browse", { params })
+  return res.data
+}
+
+export const browseTV = async (params: {
+  page?: number
+  genre_id?: string
+  year?: string
+  sort_by?: string
+}) => {
+  const res = await api.get("/tv/browse", { params })
+  return res.data
+}
+
 export const buildImageUrl = (path: string | null, size = "w500") =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : "/no-poster.png"
