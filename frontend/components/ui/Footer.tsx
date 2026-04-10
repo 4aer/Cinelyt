@@ -28,9 +28,9 @@ export default function Footer() {
             <p className="text-zinc-400 text-xs font-semibold uppercase tracking-widest">Browse</p>
             <div className="flex flex-col gap-2">
               <Link href="/" className="text-zinc-600 hover:text-zinc-300 text-xs transition">Home</Link>
-              <Link href="/search" className="text-zinc-600 hover:text-zinc-300 text-xs transition">Browse All</Link>
+              <Link href="/movies" className="text-zinc-600 hover:text-zinc-300 text-xs transition">Movies</Link>
+              <Link href="/tv" className="text-zinc-600 hover:text-zinc-300 text-xs transition">TV Shows</Link>
               <Link href="/watchlist" className="text-zinc-600 hover:text-zinc-300 text-xs transition">My Watchlist</Link>
-              <Link href="/search?ai=trending+this+week" className="text-zinc-600 hover:text-zinc-300 text-xs transition">Trending</Link>
             </div>
           </div>
 
