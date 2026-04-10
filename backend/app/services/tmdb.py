@@ -1,6 +1,9 @@
 import httpx
 from app.config import TMDB_API_KEY, TMDB_BASE_URL, TMDB_IMAGE_BASE_URL
 
+TMDB_API_KEY = TMDB_API_KEY
+TMDB_BASE_URL = TMDB_BASE_URL
+
 HEADERS = {
     "accept": "application/json",
 }
