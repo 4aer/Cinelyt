@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Film } from "lucide-react"
+import Image from "next/image"
 
 const currentYear = new Date().getFullYear()
 
@@ -13,9 +13,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-(--gold) rounded flex items-center justify-center shrink-0">
-                <Film size={12} className="text-black" />
-              </div>
+              <img src="/cinelyt_logo.png" alt="Cinelyt" className="w-6 h-6 object-contain"/>
               <span className="font-display text-xl text-white tracking-wide">CINELYT</span>
             </div>
             <p className="text-zinc-600 text-xs leading-relaxed max-w-48">
@@ -27,7 +25,7 @@ export default function Footer() {
           <div className="space-y-3">
             <p className="text-zinc-400 text-xs font-semibold uppercase tracking-widest">Browse</p>
             <div className="flex flex-col gap-2">
-              <Link href="/" className="text-zinc-600 hover:text-zinc-300 text-xs transition">Home</Link>
+              <Link href="/home" className="text-zinc-600 hover:text-zinc-300 text-xs transition">Home</Link>
               <Link href="/movies" className="text-zinc-600 hover:text-zinc-300 text-xs transition">Movies</Link>
               <Link href="/tv" className="text-zinc-600 hover:text-zinc-300 text-xs transition">TV Shows</Link>
               <Link href="/watchlist" className="text-zinc-600 hover:text-zinc-300 text-xs transition">My Watchlist</Link>

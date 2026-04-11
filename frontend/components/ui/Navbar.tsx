@@ -1,8 +1,9 @@
 "use client"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter, usePathname } from "next/navigation"
 import { useState, useEffect, useRef } from "react"
-import { Search, Bookmark, Film, X, ChevronDown, Tv, Clapperboard } from "lucide-react"
+import { Search, Bookmark, X, ChevronDown, Tv, Clapperboard } from "lucide-react"
 
 const MOVIE_GENRES = [
   { id: 28, name: "Action" }, { id: 35, name: "Comedy" }, { id: 18, name: "Drama" },
@@ -49,15 +50,13 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/5 shadow-2xl" : "bg-transparent"
+      scrolled ? "bg-[#0a0a0a]/95 backdrop-blur-md shadow-2xl" : "bg-transparent"
     }`}>
       <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between gap-4">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group">
-          <div className="w-7 h-7 bg-(--gold) rounded flex items-center justify-center">
-            <Film size={14} className="text-black" />
-          </div>
+          <img src="/cinelyt_logo.png" alt="Cinelyt" className="w-8 h-8 object-contain"/>
           <span className="font-display text-2xl text-white tracking-wide">CINELYT</span>
         </Link>
 
